@@ -8,11 +8,16 @@ export class ToDoList {
   }
 
   deleteTask( id ) {
-
+    
   }
 
   markCompleted( id ) {
-
+    for(const task of this.allTask) {
+      if (task.id == id) {
+        task.completado = !task.completado;
+        break;
+      }
+    }
   }
 
   deletedCompleted() {

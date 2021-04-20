@@ -31,3 +31,13 @@ txtInput.addEventListener('keyup', (event)=> {
   }
 });
 
+divToDoList.addEventListener('click', (event) => {
+  const elementName = event.target.localName; // A qué etiqueta le hizo click.
+  const toDoElement = event.target.parentElement.parentElement; // Retorna el elemento HTML seleccionado.
+  const toDoID = toDoElement.getAttribute('data-id'); // Conseguir id del atributo.
+  if ( elementName.includes('input') ) {
+    toDoList.markCompleted(toDoID);
+    toDoElement.classList.toggle('completed');
+  }
+  console.log(toDoList);
+});
