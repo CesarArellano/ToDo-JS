@@ -1,8 +1,8 @@
-import { ToDo } from '../classes';
-import '../css/componentes.css';
-
+import { ToDo, ToDoList } from '../classes';
 // Referencias HTML
 const divToDoList = document.querySelector('.todo-list');
+const txtInput = document.querySelector('.new-todo');
+const toDoList = new ToDoList();
 
 export const crearToDoHTML = ( toDo ) => {
   const htmlToDo = `
@@ -20,4 +20,14 @@ export const crearToDoHTML = ( toDo ) => {
   divToDoList.append(div.firstElementChild);
   return div.firstElementChild;
 };
+
+//Eventos
+txtInput.addEventListener('keyup', (event)=> {
+  if( event.keyCode === 13 && txtInput.value.length > 0) {
+    const newToDo = new ToDo(txtInput.value);
+    toDoList.newTask(newToDo);
+    crearToDoHTML(newToDo);
+    txtInput.value = '';
+  }
+});
 
