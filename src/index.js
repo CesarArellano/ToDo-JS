@@ -1,5 +1,6 @@
+import { ToDo } from './classes/todo.class';
 import { saludar } from './js/componentes'
 import './styles.css';
 
-const nombre = 'César Arellano';
-saludar(nombre);
+const tarea = new ToDo('Lavar la ropa');
+console.log(tarea);
