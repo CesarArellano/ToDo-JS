@@ -5,7 +5,7 @@ import { crearToDoHTML } from './js/componentes';
 
 
 const toDoList = new ToDoList();
-const tarea = new ToDo('Lavar la ropa');
+const tarea = new ToDo('Aprender JS');
 
 toDoList.newTask(tarea);
 
