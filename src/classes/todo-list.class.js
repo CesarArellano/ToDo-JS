@@ -8,7 +8,7 @@ export class ToDoList {
   }
 
   deleteTask( id ) {
-    
+    this.allTask = this.allTask.filter(task => task.id != id);
   }
 
   markCompleted( id ) {
