@@ -1,6 +1,13 @@
-import { ToDo } from './classes/todo.class';
-import { saludar } from './js/componentes'
 import './styles.css';
 
+import { ToDo, ToDoList } from './classes';
+
+
+const toDoList = new ToDoList();
 const tarea = new ToDo('Lavar la ropa');
-console.log(tarea);
+const tarea2 = new ToDo('Aprender React JS');
+
+toDoList.newTask(tarea);
+toDoList.newTask(tarea2);
+
+console.log(toDoList);
