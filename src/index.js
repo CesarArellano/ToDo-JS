@@ -5,5 +5,7 @@ import { crearToDoHTML } from './js/componentes';
 
 export const toDoList = new ToDoList();
 
-toDoList.allTask.forEach( crearToDoHTML ); // Sólo por que se recibe un argumento.
-//toDoList.allTask.forEach( (task) => crearToDoHTML(task) );
+//toDoList.allTask.forEach( crearToDoHTML ); // Sólo por que se recibe un argumento.
+toDoList.allTask.forEach( (task) => {
+  crearToDoHTML(task);
+});

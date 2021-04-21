@@ -1,3 +1,5 @@
+import { ToDo } from "./todo.class";
+
 export class ToDoList {
   constructor() {
     this.loadLocalStorage();
@@ -30,6 +32,7 @@ export class ToDoList {
 
   loadLocalStorage() {
     this.allTask = ( localStorage.getItem('toDo') ) ? JSON.parse(localStorage.getItem('toDo')) : [];
+    this.allTask = this.allTask.map( ToDo.fromJson );
   }
   saveLocalStorage() {
     localStorage.setItem('toDo', JSON.stringify(this.allTask));
