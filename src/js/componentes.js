@@ -1,9 +1,11 @@
-import { ToDo, ToDoList } from '../classes';
+import { ToDo } from '../classes';
+import { toDoList } from '../index';
 // Referencias HTML
 const divToDoList = document.querySelector('.todo-list');
 const txtInput = document.querySelector('.new-todo');
 const btnDelete = document.querySelector('.clear-completed');
-const toDoList = new ToDoList();
+const ulFilters = document.querySelector('.filters');
+const anchorFilters = document.querySelectorAll('.filtro');
 
 export const crearToDoHTML = ( toDo ) => {
   const htmlToDo = `
@@ -43,7 +45,6 @@ divToDoList.addEventListener('click', (event) => {
     toDoList.deleteTask( toDoID );
     divToDoList.removeChild(toDoElement);
   }
-  console.log(toDoList);
 });
 
 btnDelete.addEventListener('click', () => {
@@ -52,6 +53,30 @@ btnDelete.addEventListener('click', () => {
     const elemento = divToDoList.children[i];
     if(elemento.classList.contains('completed')) {
       divToDoList.removeChild(elemento);
+    }
+  }
+});
+
+ulFilters.addEventListener('click', (event) => {
+  const filter = event.target.text;
+  if( !filter ) return;
+  anchorFilters.forEach( element => element.classList.remove('selected'));
+  event.target.classList.add('selected');
+  for(const task of divToDoList.children) {
+    task.classList.remove('hidden');
+    const completado = task.classList.contains('completed');
+    switch(filter) {
+      case 'Pendientes':
+        if (completado) {
+          task.classList.add('hidden');
+        }
+        break;
+      case 'Completados':
+        if (!completado) {
+          task.classList.add('hidden');
+        }
+        break;
+      
     }
   }
 });
