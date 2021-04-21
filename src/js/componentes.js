@@ -2,6 +2,7 @@ import { ToDo, ToDoList } from '../classes';
 // Referencias HTML
 const divToDoList = document.querySelector('.todo-list');
 const txtInput = document.querySelector('.new-todo');
+const btnDelete = document.querySelector('.clear-completed');
 const toDoList = new ToDoList();
 
 export const crearToDoHTML = ( toDo ) => {
@@ -43,4 +44,14 @@ divToDoList.addEventListener('click', (event) => {
     divToDoList.removeChild(toDoElement);
   }
   console.log(toDoList);
+});
+
+btnDelete.addEventListener('click', () => {
+  toDoList.deletedCompleted();
+  for( let i = divToDoList.children.length -1; i >= 0 ; i-- ) {
+    const elemento = divToDoList.children[i];
+    if(elemento.classList.contains('completed')) {
+      divToDoList.removeChild(elemento);
+    }
+  }
 });
